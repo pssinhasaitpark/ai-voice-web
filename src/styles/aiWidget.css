@@ -1,0 +1,211 @@
+/*ASK AI FLOATING BUTTON (FAB) */
+.ai-fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #5b4df6;
+  color: #ffffff;
+  border-radius: 999px;
+  padding: 14px 18px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  z-index: 10000;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+}
+
+
+.ai-fab.open {
+  bottom: 480px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+   /* OVERLAY (FULL SCREEN, CHAT AT BOTTOM RIGHT) */
+
+.ai-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 16px;
+  z-index: 9999;
+}
+
+/* CHAT DIALOG */
+.ai-dialog {
+  width: 340px;
+  height: 520px;
+  background: #ffffff;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.ai-actions {
+  display: flex;
+  padding: 8px;
+  justify-content: space-between;
+  background: #f3f4f6;
+}
+
+/*  HEADER */
+.ai-header {
+  padding: 14px 16px;
+  background: #5b4df6;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.ai-header small {
+  display: block;
+  font-size: 12px;
+  opacity: 0.9;
+  font-weight: 400;
+}
+
+/* CHAT BODY */
+.chat-body {
+  flex: 1;
+  padding: 14px;
+  background: #f6f7fb;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/*  MESSAGE ROW */
+.msg-row {
+  display: flex;
+  margin-bottom: 12px;
+}
+
+.msg-row.bot {
+  justify-content: flex-start;
+}
+
+.msg-row.user {
+  justify-content: flex-end;
+}
+
+/* AVATAR */
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  margin-right: 8px;
+}
+
+.msg-row.user .avatar {
+  background: #5b4df6;
+  color: #ffffff;
+  margin-left: 8px;
+  margin-right: 0;
+}
+
+/*  MESSAGE BUBBLES */
+.msg {
+  max-width: 70%;
+  background: #ffffff;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  color: #111827;
+  line-height: 1.4;
+}
+
+.msg.user {
+  background: #5b4df6;
+  color: #ffffff;
+}
+
+/*  MESSAGE META */
+.time {
+  font-size: 11px;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+.status {
+  font-size: 11px;
+  opacity: 0.7;
+  margin-top: 2px;
+  text-align: right;
+}
+
+/* INPUT AREA */
+.chat-input {
+  display: flex;
+  gap: 10px;
+  padding: 12px;
+  border-top: 1px solid #e5e7eb;
+  background: #ffffff;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  outline: none;
+}
+
+.chat-input input:focus {
+  border-color: #5b4df6;
+}
+
+.chat-input button {
+  width: px;
+  height: 55px;
+  border-radius: 50%;
+  background: #5b4df6;
+  border: none;
+  color: #ffffff;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.chat-input button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* CHAT INPUT CLOSE (✕) BUTTON FIX
+   ONLY affects cross icon  */
+
+.chat-input button {
+  background: #5b4df6; 
+}
+
+/* If button text is ✕, make it lighter */
+.chat-input button:has(span),
+.chat-input button.close,
+.chat-input button[aria-label="close"] {
+  background: #e5e7eb;
+  color: #374151;
+  font-size: 16px;
+}
+
+/* Optional: hover effect */
+.chat-input button.close:hover {
+  background: #d1d5db;
+}
