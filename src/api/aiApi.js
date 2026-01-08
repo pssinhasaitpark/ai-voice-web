@@ -1,5 +1,3 @@
-// const BASE_URL = "http://192.168.0.201:3000/api";
-// const BASE_URL = "https://ai-voice-open-api.vercel.app/api";
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export async function startConversation() {
