@@ -23,7 +23,7 @@ export default function AIWidget({ onExtractUpdate }) {
       </button>
 
       {open && (
-        <div className="ai-overlay" onClick={closeAll}>
+        <div className="ai-overlay" >
           <div
             className="ai-dialog"
             onClick={(e) => e.stopPropagation()}
