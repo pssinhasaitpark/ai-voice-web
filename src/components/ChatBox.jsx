@@ -52,54 +52,54 @@ export default function ChatBox({ onBack, onExtractUpdate }) {
     setInput("");
     setSending(true);
 
-try {
-  const res = await sendMessage(conversationId, input);
+    try {
+      const res = await sendMessage(conversationId, input);
 
-  // ✅ mark last user message as sent (ONLY ONCE)
-  setMessages((prev) =>
-    prev.map((m, i) =>
-      i === prev.length - 1 ? { ...m, status: "sent" } : m
-    )
-  );
+      // ✅ mark last user message as sent (ONLY ONCE)
+      setMessages((prev) =>
+        prev.map((m, i) =>
+          i === prev.length - 1 ? { ...m, status: "sent" } : m
+        )
+      );
 
-  // ⚠️ AI ERROR MESSAGE (optional warning)
-  if (res.meta?.aiError) {
-    setMessages((prev) => [
-      ...prev,
-      {
-        from: "bot",
-        text: "⚠️  429 Rate limit reached for gpt-4o-mini in organization org. Please try again.",
-        time: new Date().toLocaleTimeString([], {
-          hour: "2-digit",
-          minute: "2-digit",
-        }),
-      },
-    ]);
-  }
+      // ⚠️ AI ERROR MESSAGE (optional warning)
+      if (res.meta?.aiError) {
+        setMessages((prev) => [
+          ...prev,
+          {
+            from: "bot",
+            text: "⚠️  429 Rate limit reached for gpt-4o-mini in organization org. Please try again.",
+            time: new Date().toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+            }),
+          },
+        ]);
+      }
 
-  // 🤖 Bot reply (question / repeat / next)
-  setMessages((prev) => [
-    ...prev,
-    {
-      from: "bot",
-      text: res.text,
-      time: new Date().toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-      }),
-    },
-  ]);
+      // 🤖 Bot reply (question / repeat / next)
+      setMessages((prev) => [
+        ...prev,
+        {
+          from: "bot",
+          text: res.text,
+          time: new Date().toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+          }),
+        },
+      ]);
 
-  // 📌 Update extracted data
-  if (res.data) {
-    onExtractUpdate((prev) => ({
-      ...prev,
-      ...res.data,
-    }));
-  }
-} finally {
-  setSending(false);
-}
+      // 📌 Update extracted data
+      if (res.data) {
+        onExtractUpdate((prev) => ({
+          ...prev,
+          ...res.data,
+        }));
+      }
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -117,11 +117,12 @@ try {
             {/* BOT AVATAR */}
             {m.from === "bot" && <div className="avatar">🤖</div>}
 
-            <div>
+            <div className="msg-wrapper">
               <div className={`msg ${m.from}`}>{m.text}</div>
 
               {m.from === "user" && m.status === "sending" && (
                 <div className="status">Sending…</div>
+
               )}
 
               <div className="time">{m.time}</div>
